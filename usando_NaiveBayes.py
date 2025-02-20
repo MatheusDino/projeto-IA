@@ -1,5 +1,6 @@
 import pandas as pd
 import numpy as np
+import time
 from sklearn.preprocessing import MinMaxScaler
 from sklearn.model_selection import train_test_split
 from sklearn.naive_bayes import GaussianNB
@@ -62,6 +63,7 @@ models = {
 # para nós os indicadores de Precisão, F1-Score, Recall e score de curvas AUC-ROC.
 def evaluate_models(X, y, models, cv):
     results = {}
+    start_time = time.time()
     # Percorre a lista de algoritmos que demos.
     for model_name, model in models.items():
         precision_scores = []
@@ -93,6 +95,8 @@ def evaluate_models(X, y, models, cv):
             'Recall': np.mean(recall_scores),
             'AUC-ROC': np.mean(roc_auc_scores),
         }
+    elapsed_time = time.time() - start_time
+    results['Elapsed Time'] = elapsed_time
     
     return results
 
