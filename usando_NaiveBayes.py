@@ -12,7 +12,7 @@ from sklearn.metrics import precision_score, f1_score, recall_score, roc_auc_sco
 # Aqui carregamos a base bruta
 # e transformamos ela em um DataFrame "df" para ficar mais fácil e leve de trabalhar.
 # Lembrando que no caso do nosso grupo nossa base já passou por um preprocessamento PCA.
-df = pd.read_csv("creditcard.csv")
+df = pd.read_csv("base_bruta.csv")
 X = df.drop('Class', axis=1)
 y = df['Class']
 
